@@ -38,18 +38,15 @@ body {
     left: 16px;
   }
 
-  .search-input {
-    // animation-name: run;
-    // animation: linear;
-    // animation-duration: 5s;
-    // -webkit-animation: linear;
-    // -webkit-animation-name: run;
-    // -webkit-animation-duration: 5s;
+.search-input {
     font-size: 21px;
-
     transition: width 3s ease-out;
-    animation: search;
-    animation-duration: 0.3s;
+    animation-name: search;
+      animation-duration: 0.3s;
+    -webkit-animation-name: search;
+      -webkit-animation-duration: 0.3s;
+      -moz-animation-name: search;
+        -moz-animation-duration: 0.3s;
   }
 
   .searchbar-icon {
@@ -66,7 +63,6 @@ body {
     height: 55px;
     padding: 16px;
     box-sizing: border-box;
-    animation: '0.3s linear 0s 1 normal none running';
   }
 
   .options {
@@ -81,10 +77,6 @@ body {
     column-gap: 10px;
   }
 
-  .collapse {
-    animation: searchClose;
-    animation-duration: 0.3s;
-  }
 }
 
 .movies-page {
@@ -273,11 +265,12 @@ body {
   grid-row: auto;
   animation-name: moviedetails;
   animation-duration: .3s;
+  -webkit-animation-name: moviedetails;
+    -webkit-animation-duration: 0.3s;
+    -moz-animation-name: moviedetails;
+      -moz-animation-duration: 0.3s;
 
   .MuiPaper-root {
-    -webkit-animation: height .3s ease-out forwards 2s;
-    animation: height .3s ease-out forwards 2s;
-    -moz-animation: height .3s ease-out forwards 2s;
     border-radius: 11px;
   }
 
@@ -295,8 +288,12 @@ body {
     align-items: center;
 
     .MuiLinearProgress-bar {
-      animation: ratings;
+      animation-name: ratings;
       animation-duration: 0.3s;
+      -webkit-animation-name: ratings;
+        -webkit-animation-duration: 0.3s;
+        -moz-animation-name: ratings;
+          -moz-animation-duration: 0.3s;
     }
   }
 
@@ -436,15 +433,5 @@ body {
 
   to {
     width: 570px
-  }
-}
-
-@keyframes searchClose {
-  from {
-    width: 570px;
-  }
-
-  to {
-    width: 0
   }
 }
