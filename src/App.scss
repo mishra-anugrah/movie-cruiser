@@ -185,6 +185,7 @@ body {
   .movies-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    justify-items: center;
     flex-grow: 1;
     column-gap: 17px;
     row-gap: 36px;
@@ -266,9 +267,9 @@ body {
   animation-name: moviedetails;
   animation-duration: .3s;
   -webkit-animation-name: moviedetails;
-    -webkit-animation-duration: 0.3s;
+  -webkit-animation-duration: 0.3s;
     -moz-animation-name: moviedetails;
-      -moz-animation-duration: 0.3s;
+    -moz-animation-duration: 0.3s;
 
   .MuiPaper-root {
     border-radius: 11px;
@@ -281,6 +282,17 @@ body {
   .details-section {
     margin-bottom: 15px;
   }
+
+  .MuiCardContent-root {
+      margin: 0;
+      padding: 16px;
+      padding-left: 45px;
+      overflow-x: hidden;
+    }
+    
+    .details-watch-buttons {
+      display: flex;
+    }
 
   .movie-rating {
     color: #fff;
@@ -381,6 +393,7 @@ body {
     .movies-grid {
       padding: 0 20px 45px 20px;
       justify-content: space-between;
+      height: 80vh;
     }
 
     .movie-card {
@@ -390,7 +403,7 @@ body {
     .searchbar {
       padding: 0 20px;
       margin-bottom: 0;
-      margin-top: 2vh;
+      margin: 2vh 0;
     }
   }
 
@@ -402,6 +415,26 @@ body {
     .MuiPaper-root {
       width: auto;
       min-width: 160px;
+    }
+  }
+  
+  .movie-details {
+    .MuiPaper-root {
+      flex-direction: column;
+      overflow: auto;
+      align-items: center;
+    }
+
+    .MuiButtonBase-root {
+      width: 136px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .dashboard {
+    .movies-grid {
+      column-gap: 5px;
     }
   }
 }
@@ -432,6 +465,6 @@ body {
   }
 
   to {
-    width: 570px
+    width: auto
   }
 }

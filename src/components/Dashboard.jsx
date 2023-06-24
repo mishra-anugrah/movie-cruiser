@@ -43,7 +43,13 @@ export const Dashboard = (props) => {
   );
 
   const getRowNumber = (index) => {
-    const columnsPerRow = Math.floor((gridRef.current.offsetWidth - 80) / 178);
+      const paddingX = window
+        .getComputedStyle(gridRef.current, null)
+        .getPropertyValue("padding")
+        .split("px")[1];
+      const columnsPerRow = Math.floor(
+        (gridRef.current.offsetWidth - paddingX * 2) / 178
+      );
     const rowIndex = Math.floor(index / columnsPerRow) + 1;
     return rowIndex;
   };

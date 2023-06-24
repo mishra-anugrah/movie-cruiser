@@ -74,9 +74,9 @@ export const MovieDetails = (props) => {
                   {movie.Plot}
                 </Box>
 
-                <Box className="details-section">
+                <Box className="details-section details-watch-buttons">
                   <Button variant="contained">Play Movie</Button>
-                  <Button variant="outlined">Play Movie</Button>
+                  <Button variant="outlined">Watch Trailer</Button>
                 </Box>
               </CardContent>
             </Animate>
