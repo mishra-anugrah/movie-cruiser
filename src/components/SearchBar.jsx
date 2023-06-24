@@ -41,7 +41,7 @@ export const SearchBar = (props) => {
         sx={{ ml: 1, flex: 1 }}
         placeholder="Title, Movies, Keyword"
         onChange={(event) => {
-          handleSearchQueryChange(event.target.value);
+          handleSearchQueryChange(event.target.value.toLowerCase());
         }}
         onKeyUp={(event) => searchMovies(event.target.value)}
         value={searchQuery}
