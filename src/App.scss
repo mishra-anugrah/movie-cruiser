@@ -1,0 +1,447 @@
+@import './colors.scss';
+
+@mixin page-text-common {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  color: $off-white;
+}
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $grey-3;
+    border-radius: 10px;
+  }
+}
+
+body {
+  overflow: hidden;
+}
+
+.searchbar {
+  @include page-text-common();
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 5px;
+  padding: 0 48px 0 48px;
+  height: 59px;
+  font-size: 21px;
+
+  .search-icon-collapsed {
+    position: relative;
+    left: 16px;
+  }
+
+  .search-input {
+    // animation-name: run;
+    // animation: linear;
+    // animation-duration: 5s;
+    // -webkit-animation: linear;
+    // -webkit-animation-name: run;
+    // -webkit-animation-duration: 5s;
+    font-size: 21px;
+
+    transition: width 3s ease-out;
+    animation: search;
+    animation-duration: 0.3s;
+  }
+
+  .searchbar-icon {
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  .MuiPaper-root {
+    width: 570px;
+    height: 55px;
+    padding: 16px;
+    box-sizing: border-box;
+    animation: '0.3s linear 0s 1 normal none running';
+  }
+
+  .options {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  .collapse {
+    animation: searchClose;
+    animation-duration: 0.3s;
+  }
+}
+
+.movies-page {
+  display: flex;
+}
+
+.navigation {
+
+  background-color: $grey-1;
+  background-repeat: repeat;
+  font-family: 'Open Sans';
+  width: 275px;
+  flex-shrink: 0;
+  height: 100vh;
+  overflow-Y: auto;
+  @include scrollbar();
+
+  .close-menu-button {
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    left: 85%;
+    font-size: 1.5em;
+  }
+
+  .navigation-divider {
+    margin: 20px 0;
+    background: $grey-3;
+  }
+
+  .MuiDrawer-paper {
+    min-width: 275px;
+    @include scrollbar();
+  }
+
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 42px;
+
+    .profile-picture {
+      height: 91px;
+      width: 91px;
+      border-radius: 50px;
+      margin-bottom: 11px;
+    }
+
+    .username {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 27px;
+      text-align: center;
+      color: $off-white;
+    }
+  }
+
+
+  overflow-x: clip;
+
+  .navigation-list {
+    @include page-text-common;
+
+    .MuiTab-root {
+      min-height: 33px;
+      padding-left: 54px;
+      font: inherit;
+      color: $off-white;
+      text-transform: none;
+      justify-content: flex-start;
+      opacity: 1;
+      font-size: 15px;
+    }
+
+    .Mui-selected {
+      color: $cyan;
+    }
+
+    .MuiTabs-indicator {
+      background-color: #00E0FF;
+      padding-left: 3px;
+    }
+  }
+
+}
+
+.dashboard {
+
+  background-color: $grey-2;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  // padding-top: 5vh;
+
+  .searchbar {
+    margin: 5vh 0;
+  }
+
+
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    flex-grow: 1;
+    column-gap: 17px;
+    row-gap: 36px;
+    padding: 0 48px 48px 48px;
+    height: 70vh;
+    overflow: auto;
+    @include scrollbar();
+  }
+
+  .no-results {
+    color: #FFF;
+    font-size: 21px;
+    line-height: 44px;
+  }
+}
+
+.selected-card {
+  box-shadow: 0 0 0 1px $cyan, 0px 0px 20px 5px rgba(0, 0, 0, 0.35);
+}
+
+.movie-card {
+  @include page-text-common;
+
+  padding: 12px;
+  background-color: $grey-3;
+  width: 178px;
+  height: 310px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &__title {
+    margin-top: 12px;
+    margin-bottom: 4px;
+  }
+
+  .card-poster {
+    border-radius: 5px;
+  }
+
+  .card-actions {
+    color: $off-white;
+    font-size: 24px;
+  }
+
+  .MuiCardActions-root {
+    padding-left: 0;
+  }
+
+  .MuiCardMedia-root {
+    border-radius: 5px;
+  }
+}
+
+.details-visible {
+  height: auto;
+  width: auto;
+
+  .MuiPaper-root {
+    height: auto;
+    width: auto;
+  }
+}
+
+.details-hidden {
+  height: 0;
+  width: 0;
+
+  .MuiPaper-root {
+    height: 0;
+    width: 0;
+  }
+}
+
+.movie-details {
+  flex-basis: 100%;
+  @include page-text-common;
+  grid-column: 1 / -1;
+  grid-row: auto;
+  animation-name: moviedetails;
+  animation-duration: .3s;
+
+  .MuiPaper-root {
+    -webkit-animation: height .3s ease-out forwards 2s;
+    animation: height .3s ease-out forwards 2s;
+    -moz-animation: height .3s ease-out forwards 2s;
+    border-radius: 11px;
+  }
+
+  .MuiCardMedia-root {
+    max-width: 300px;
+  }
+
+  .details-section {
+    margin-bottom: 15px;
+  }
+
+  .movie-rating {
+    color: #fff;
+    display: flex;
+    align-items: center;
+
+    .MuiLinearProgress-bar {
+      animation: ratings;
+      animation-duration: 0.3s;
+    }
+  }
+
+  .movie-details-content {
+    .MuiCardContent-root {
+      overflow: auto;
+      padding-bottom: 20px;
+
+      @include scrollbar();
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $grey-1;
+      }
+
+    }
+
+    .info-group {
+      display: flex;
+      column-gap: 3em;
+    }
+
+    .info-row {
+      display: flex;
+      column-gap: 20px;
+      justify-content: space-between;
+    }
+
+    .labels div,
+    .values div {
+      padding-bottom: 10px;
+    }
+
+    .movie-description {
+      font-weight: 400;
+    }
+
+
+    .MuiButtonBase-root {
+      font-size: 16;
+      font-weight: bold;
+      width: 154px;
+      height: 38px;
+      margin-right: 16px;
+      margin-top: 15px
+    }
+
+    .MuiButton-contained {
+      background-color: $cyan;
+      color: #000;
+    }
+
+    .MuiButton-outlined {
+      border-color: $cyan;
+      color: $cyan;
+    }
+  }
+
+  .MuiLinearProgress-root {
+    background-color: $grey-2;
+    border-radius: 5px;
+    height: 8px;
+    width: 111px;
+    margin-right: 10px;
+  }
+
+  .MuiLinearProgress-bar {
+    background-color: $cyan;
+  }
+}
+
+
+@media (max-width: 650px) {
+  body aside {
+    & .MuiDrawer-paper {
+      box-sizing: "border-box";
+      width: 0;
+      overflow-x: "clip";
+    }
+
+    display: none;
+    width: 0;
+  }
+
+  .dashboard {
+    .movies-grid {
+      padding: 0 20px 45px 20px;
+      justify-content: space-between;
+    }
+
+    .movie-card {
+      width: 150px;
+    }
+
+    .searchbar {
+      padding: 0 20px;
+      margin-bottom: 0;
+      margin-top: 2vh;
+    }
+  }
+
+  .searchbar {
+    .menu-icon {
+      display: block;
+    }
+
+    .MuiPaper-root {
+      width: auto;
+      min-width: 160px;
+    }
+  }
+}
+
+@keyframes moviedetails {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 400px;
+  }
+}
+
+@keyframes ratings {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes search {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 570px
+  }
+}
+
+@keyframes searchClose {
+  from {
+    width: 570px;
+  }
+
+  to {
+    width: 0
+  }
+}
