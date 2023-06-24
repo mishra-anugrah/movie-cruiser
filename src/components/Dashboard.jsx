@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import { MovieCard } from "./MovieCard";
 import movies from "../config/data.json";
